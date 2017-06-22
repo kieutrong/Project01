@@ -1,8 +1,14 @@
 en:
+  maximum_file_size_is: "Maximum file size is 5MB. Please choose a smaller file."
+
   account_activations:
     edit:
       account_activated: "Account activated!"
       invalid_activation_link: "Invalid activation link"
+
+  errors:
+    messages:
+      mini_magick_processing_error: "should be less than 5MB"
 
   layouts:
     application:
@@ -32,6 +38,25 @@ en:
     error_messages:
       error: "error"
       the_form_contains: "The form contains "
+    micropost_form:
+      compose_new_micropost: "Compose new micropost..."
+      maximum_file_size_is_5MB: "Maximum file size is 5MB. Please choose a smaller file."
+      post: "Post"
+    user_info:
+      micropost: "micropost"
+      view_my_profile: "view my profile"
+
+  microposts:
+    create:
+      micropost_created: "Micropost created!"
+    destroy:
+      error: "Micropost delete failed "
+      micropost_deleted: "Micropost deleted"
+    micropost:
+      ago: " ago."
+      delete: "delete"
+      posted: "Posted "
+      you_sure: "You sure?"
 
   sessions:
     create:
@@ -91,6 +116,7 @@ en:
       to_get_help: "To get help on this sample app, see the"
 
     home:
+      micropost_feed: "Micropost Feed"
       ruby_on_rails: "Ruby on Rails Tutorial"
       sample_application: "sample application."
       sign_up: "Sign up now!"
@@ -145,6 +171,7 @@ en:
       title: "Sign up"
 
     show:
+      microposts: "Microposts "
       note: "Couldn't find User with 'id'= "
 
     update:

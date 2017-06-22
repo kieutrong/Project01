@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, except: [:new, :create, :destroy]
   before_action :correct_user, only: [:edit, :update]
-  before_action :verify_admin, only: :destroy
+  before_action :admin_user, only: :destroy
   before_action :load_user, except: [:index, :new, :create]
 
   def index
@@ -27,6 +27,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @microposts = @user.microposts.paginate page: params[:page],
+      per_page: Settings.user.users_per_page
   end
 
   def edit
@@ -56,13 +58,6 @@ class UsersController < ApplicationController
     params.require(:user).permit :name, :email, :password, :password_confirmation
   end
 
-  def logged_in_user
-    return if logged_in?
-    store_location
-    flash[:danger] = t ".please_log_in"
-    redirect_to login_url
-  end
-
   def correct_user
     @user = User.find_by id: params[:id]
 
@@ -71,8 +66,8 @@ class UsersController < ApplicationController
     flash[:danger] = t ".you_have_not_access"
   end
 
-  def verify_admin
-    redirect_to root_url unless current_user.is_admin?
+  def admin_user
+    redirect_to root_url unless current_user.admin?
   end
 
   def load_user
