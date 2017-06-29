@@ -8,8 +8,14 @@
   <span class="timestamp">
     <%= t ".posted" %><%= time_ago_in_words micropost.created_at %><%= t ".ago" %>
     <% if current_user.is_user? micropost.user %>
-      <%= link_to t(".delete"), micropost, method: :delete,
+      <%= link_to t(".delete"), micropost, method: :delete, class: "delete_micropost",
         data: {confirm: t(".you_sure")} %>
     <% end %>
   </span>
+
+  <%= render "shared/form_comment", micropost: micropost %>
+
+  <li class="comments">
+    <%= render micropost.comments.select(:id, :content, :user_id, :micropost_id, :created_at).order(created_at: :DESC) %>
+  </li>
 </li>

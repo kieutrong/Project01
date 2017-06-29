@@ -1,0 +1,64 @@
+class CommentsController < ApplicationController
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @comments = Comment.all
+  end
+
+  def show
+    @comments = @user.comments.paginate page: params[:page],
+      per_page: Settings.user.users_per_page
+  end
+
+  def new
+    @comment = Comment.new
+  end
+
+  def edit
+  end
+
+  def create
+    @micropost = Micropost.find_by id:(params[:micropost_id])
+    @comment = @micropost.comments.build(comment_params)
+
+    if @comment.save
+      render json: {status: :success, html: render_to_string(@comment)}
+    else
+      render json: {status: :error, message: "Create comment fails"}
+    end
+  end
+
+  # PATCH/PUT /comments/1.json
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.json { render :show, status: :ok, location: @comment }
+      else
+        format.html { render :edit }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    if @comment.destroy
+      render json: {status: :success}
+    else
+      render json: {status: :error, message: "Delete fails"}
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def comment_params
+      params.require(:comment).permit(:content, :user_id)
+    end
+end
+
+

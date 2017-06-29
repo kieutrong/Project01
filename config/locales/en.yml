@@ -54,7 +54,7 @@ en:
       micropost_deleted: "Micropost deleted"
     micropost:
       ago: " ago."
-      delete: "delete"
+      delete: "Delete"
       posted: "Posted "
       you_sure: "You sure?"
 
@@ -159,6 +159,12 @@ en:
       update_your_profile: "Update your profile"
       you_have_not_access: "You have not access."
 
+    form:
+      confimation: "Confimation"
+      email: "Email"
+      name: "Name"
+      password: "Password"
+
     index:
       all_users: "All users"
 
@@ -168,7 +174,7 @@ en:
       email: "Email"
       name: "Name"
       password: "Password"
-      title: "Sign up"
+      sign_up: "Sign up"
 
     show:
       microposts: "Microposts "

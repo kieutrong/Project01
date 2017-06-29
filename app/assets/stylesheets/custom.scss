@@ -143,6 +143,15 @@ aside {
       display: block;
       line-height: 1;
       margin-bottom: 3px;
+
+      a {
+      color: #B40404;
+      &:hover {
+      color: #B40404;
+      background: white;
+      font-weight: bold;
+      }
+    }
     }
 
     h1 {
@@ -214,6 +223,7 @@ input {
 .users {
   list-style: none;
   margin: 0;
+  color: red;
 
   li {
     border-bottom: 1px solid $gray-medium-light;
@@ -227,27 +237,55 @@ input {
 .microposts {
   list-style: none;
   padding: 0;
+
   li {
     border-top: 1px solid $gray-e8e8e8;
     padding: 10px 0;
   }
+
   .user {
     margin-top: 5em;
     padding-top: 0;
+    font-size: 20px;
+
+    a {
+      color: #B40404;
+      font-weight: bold;
+      &:hover {
+      background: white;
+      }
+    }
   }
+
   .content {
+    margin-top: 25px;
     display: block;
     margin-left: 60px;
+    font-size: 15px;
+
     img {
       display: block;
       padding: 5px 0;
+      max-width: 680px;
     }
   }
+
   .timestamp {
     color: $gray-light;
     display: block;
     margin-left: 60px;
+
+    a {
+      color: #B40404;
+      &:hover {
+      text-decoration: none;
+      color: red;
+      background: white;
+      font-weight: bold;
+      }
+    }
   }
+
   .gravatar {
     float: left;
     margin: 5px 10px 0 0;
@@ -263,7 +301,119 @@ aside {
 
 span.picture {
   margin-top: 10px;
+
   input {
     border: 0;
   }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: #B40404;
+      background: white;
+      font-weight: bold;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
+/*new comment*/
+
+.new_comment {
+  margin-top: 10px;
+
+  .text_comment{
+    max-width: 680px;
+    height: 35px;
+    padding-top: 5px;
+    padding-left: 10px;
+  }
+
+  .btn_comment{
+    width: 200px;
+    margin-top: -10px;
+  }
+}
+
+.user_comment{
+  img {
+    width: 30px;
+  }
+  .user_commented{
+    color: #B40404;
+    font-weight: bold;
+
+    &:hover {
+      background: white;
+      font-weight: bold;
+    }
+  }
+  a{
+    color: #B40404;
+    &:hover {
+      text-decoration: none;
+      color: red;
+      background: white;
+      font-weight: bold;
+    }
+  }
+}
+
+.new_micropost{
+  .field{
+    textarea{
+      width: 600px;
+    }
+
+  }
+  input{
+      width: 600px;
+    }
+}
+
+.comments{
+  margin-top: -20px;
 }

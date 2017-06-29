@@ -1,7 +1,13 @@
 class Micropost < ApplicationRecord
   belongs_to :user
 
-  scope :feed_by_user, ->(id){where("user_id = #{id}").order(created_at: :asc )}
+  has_many :comments, dependent: :destroy
+
+  scope :order_by, ->{order(created_at: :desc )}
+  scope :feed_by_user, ->(following_ids, id) do
+    where("user_id IN (?) OR user_id = ?", following_ids, id)
+  end
+
   mount_uploader :picture, PictureUploader
 
   validates :user_id, presence: true

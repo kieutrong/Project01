@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :load_user, except: [:index, :new, :create]
 
   def index
-    @users = User.select(:id, :name, :email, :created_at).order(created_at: :asc)
+    @users = User.select(:id, :name, :email, :created_at).order(created_at: :desc)
       .paginate page: params[:page], per_page: Settings.user.users_per_page
   end
 
@@ -50,6 +50,20 @@ class UsersController < ApplicationController
       flash[:danger] = t ".you_can_not_delete"
     end
     redirect_to users_url
+  end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   private
