@@ -21,7 +21,7 @@ en:
       log_in: "Log in"
       log_out: "Log out"
       profile: "Profile"
-      sample_app: "sample app"
+      connect: "Connect"
       settings: "Settings"
       users: "Users"
 
@@ -38,7 +38,7 @@ en:
     error_messages:
       error: "error"
       the_form_contains: "The form contains "
-    micropost_form:
+    form_micropost:
       compose_new_micropost: "Compose new micropost..."
       maximum_file_size_is_5MB: "Maximum file size is 5MB. Please choose a smaller file."
       post: "Post"
@@ -159,7 +159,7 @@ en:
       update_your_profile: "Update your profile"
       you_have_not_access: "You have not access."
 
-    form:
+    form_new_edit:
       confimation: "Confimation"
       email: "Email"
       name: "Name"
@@ -167,6 +167,7 @@ en:
 
     index:
       all_users: "All users"
+      please_log_in: "Please log in."
 
     new:
       confirmation: "Confirmation"

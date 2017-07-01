@@ -21,10 +21,19 @@ gem "mini_magick", "4.7.0"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.1"
 gem "sass-rails", "~> 5.0"
-gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "will_paginate", "3.1.5"
+group :development, :test do
+  gem "sqlite3"
+end
+group :production do
+  gem "pg", "0.17.1"
+  gem "rails_12factor", "0.0.2"
+end
+gem "figaro"
+gem "jquery-validation-rails"
+gem "toastr-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

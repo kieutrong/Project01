@@ -65,19 +65,36 @@ p {
 }
 
 /* header */
+.nav{
+  background: #8A0808;
+  /*background-position: 100%;*/
+  /*width:100%;*/
+}
+
+.nav_center{
+  background: #8A0808;
+  /*height: 35px;*/
+  /*width: 100%;*/
+}
 
 #logo {
   color: $white-zero;
   float: left;
-  font-size: 1.7em;
+  font-size: 30px;
   font-weight: bold;
   letter-spacing: -1px;
   margin-right: 10px;
+  padding-left: 10px;
   padding-top: 9px;
-  text-transform: uppercase;
+  line-height: 30px;
+  background: #8A0808;
+  margin-left: -20px;
+  padding-left: 40px;
+  height: 50px;
 
   &:hover {
-    color: $white-zero;
+    color: $gray-medium-light;
+    background: #8A0808;
     text-decoration: none;
   }
 }
@@ -185,21 +202,35 @@ input {
   height: auto !important;
 }
 
+.field_with_errors {
+    padding: 2px;
+    background-color: white;
+    display: table;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
 .error_explanation {
   color: red;
-
+  width: 450px;
+  border: 2px solid green;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
   ul {
     color: red;
     margin: 0 0 30px;
   }
 }
-
-.field_with_errors {
-  @extend .has-error;
-
-  .form-control {
-    color: $state-danger-text;
-  }
+#error_explanation {
+  border: 2px solid white;
+  border-radius: 10px;
+}
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+  color: red;
 }
 
 /* session_remember_me */
@@ -416,4 +447,35 @@ span.picture {
 
 .comments{
   margin-top: -20px;
+}
+
+/*sign_up_now*/
+.jumbotron{
+  height: 500px;
+}
+.sign_up_now{
+  margin-left: 30px;
+  background: #eaeaea;
+  height: 500px;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+}
+
+// new_user
+
+.new_user input{
+  width: 300px;
+  margin-left: -70px;
+}
+
+//
+
+label.error{
+  color: red;
+  margin-top: -10px;
+}
+
+.error-class{
+  color: red;
+
 }

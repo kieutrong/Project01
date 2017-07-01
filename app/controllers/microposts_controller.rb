@@ -5,7 +5,8 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build micropost_params
     if @micropost.save
-      render json: { html_post: render_to_string(@micropost)}
+      flash[:success] = t ".micropost_created"
+      redirect_back(fallback_location: root_path)
     else
       @feed_items = []
       render json: {status: :error, message: "Delete fails"}

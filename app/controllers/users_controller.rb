@@ -21,8 +21,7 @@ class UsersController < ApplicationController
       flash[:info] = t ".please_check_your_email"
       redirect_to root_url
     else
-      flash.now[:danger] = t ".no_created"
-      render :new
+      render json: {status: :error, errors: @user.errors.messages}
     end
   end
 
@@ -55,14 +54,16 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
+    @users = @user.following.paginate page: params[:page],
+      per_page: Settings.user.users_per_page
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers.paginate page: params[:page],
+      per_page: Settings.user.users_per_page
     render 'show_follow'
   end
 

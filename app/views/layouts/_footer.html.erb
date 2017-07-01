@@ -3,11 +3,14 @@
     <%= t ".the" %><%= link_to t(".title"), "http://www.railstutorial.org/" %>
     <%= t ".by" %><%= link_to t(".author"), "http://www.michaelhartl.com/" %>
   </small>
-  <nav>
-    <ul>
-      <li><%= link_to t(".about"), about_path %></li>
-      <li><%= link_to t(".contact"), contact_path %></li>
-      <li><%= link_to t(".new"), "http://news.railstutorial.org/" %></li>
-    </ul>
-  </nav>
+  <div class = "col-md-12 row">
+    <nav>
+      <ul>
+        <li><%= link_to t(".about"), about_path %></li>
+        <li><%= link_to t(".contact"), contact_path %></li>
+        <li><%= link_to t(".new"), "http://news.railstutorial.org/" %></li>
+      </ul>
+    </nav>
+  </div>
 </footer>
+<div class="clearfix"></div>

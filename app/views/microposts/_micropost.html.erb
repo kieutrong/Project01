@@ -1,4 +1,4 @@
-<li id="<%= micropost.id %>">
+<li id="<%= micropost.id %>" class = "micropost_all">
   <%= link_to gravatar_for(micropost.user, size: Settings.micropost.size_for_gravatar),
   micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
@@ -15,7 +15,5 @@
 
   <%= render "shared/form_comment", micropost: micropost %>
 
-  <li class="comments">
-    <%= render micropost.comments.select(:id, :content, :user_id, :micropost_id, :created_at).order(created_at: :DESC) %>
-  </li>
+  <%= render micropost.comments.select(:id, :content, :user_id, :micropost_id, :created_at).order(created_at: :DESC) %>
 </li>
