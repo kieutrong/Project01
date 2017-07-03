@@ -14,7 +14,10 @@ $(document).ready(function () {
       dataType: 'json',
       success: function (response) {
         if (response.status == 'success') {
-          window.location.replace(response.redirect_to);
+          // window.location.replace(response.redirect_to);
+          // self.closest('.microposts > .micropost_all').hide();
+          // self.closest(".new_user ").after(response.html);
+          alert(response.html);
         } else {
           page_notice_custom_error()
           form_has_errors(form,'user',response.errors)

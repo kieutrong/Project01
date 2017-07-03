@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require jquery.validate
 //= require toastr
+//= require turbolinks
 //= require_tree .

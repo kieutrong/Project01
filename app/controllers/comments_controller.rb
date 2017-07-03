@@ -18,17 +18,21 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @micropost = Micropost.find_by id:(params[:micropost_id])
-    @comment = @micropost.comments.build(comment_params)
-
-    if @comment.save
-      render json: {status: :success, html: render_to_string(@comment)}
+      @micropost = Micropost.find_by id:(params[:micropost_id])
+      @comment = Comment.find_by id:(params[:manager_parent_id])
+    if @comment.nil?
+      @comment = @micropost.comments.build(comment_params)
     else
-      render json: {status: :error, message: "Create comment fails"}
+      @comment_child = @comment.comments.build(comment_params)
     end
+
+      if @comment.save
+        render json: {status: :success, html: render_to_string(@comment)}
+      else
+        render json: {status: :error, message: "Create comment fails"}
+      end
   end
 
-  # PATCH/PUT /comments/1.json
   def update
     respond_to do |format|
       if @comment.update(comment_params)
@@ -50,14 +54,12 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:content, :user_id)
+      params.require(:comment).permit :content
     end
 end
 

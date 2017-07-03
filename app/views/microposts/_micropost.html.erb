@@ -15,5 +15,5 @@
 
   <%= render "shared/form_comment", micropost: micropost %>
 
-  <%= render micropost.comments.select(:id, :content, :user_id, :micropost_id, :created_at).order(created_at: :DESC) %>
+  <%= render micropost.comments.all %>
 </li>

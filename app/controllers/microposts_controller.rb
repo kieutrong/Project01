@@ -9,7 +9,8 @@ class MicropostsController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       @feed_items = []
-      render json: {status: :error, message: "Delete fails"}
+      redirect_back(fallback_location: root_path)
+      flash[:danger] = "Post fails"
     end
   end
 

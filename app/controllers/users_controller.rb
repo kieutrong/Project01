@@ -17,9 +17,8 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      @user.send_activation_email
-      flash[:info] = t ".please_check_your_email"
-      redirect_to root_url
+      render json: {status: :success, html: t(".please_check_your_email")}
+      # render json: {status: :success, html: render_to_string(@user)}
     else
       render json: {status: :error, errors: @user.errors.messages}
     end

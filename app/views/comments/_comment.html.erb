@@ -2,13 +2,25 @@
 <%= link_to gravatar_for(comment.user, size: Settings.micropost.size_for_gravatar),
   comment.user %>
   <%= link_to comment.user.name, comment.user, class: "user_commented" %>
-  <%= comment.content %>
+  <span class="content_commented"><%= comment.content %></span>
   <span class="time_of_comment"> | <%= time_ago_in_words comment.created_at %> | </span>
 
   <% if logged_in? %>
-    <% if current_user.is_user? comment.user or current_user? @micropost.user %>
+    <% if current_user.is_user? comment.user  %>
       <%= link_to "Delete", [comment.micropost, comment],
       method: :delete, :remote => true, class: "delete_comment",data: {confirm: "You sure?"} %>
     <% end %>
   <% end %>
+
+  <%= form_for([comment.micropost, comment, comment.comment_child.build]) do |f| %>
+    <p>
+      <%= f.text_field :content , placeholder: "Write comments... ", class: "text_comment" %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :manager_parent_id, value: comment.id %>
+    </p>
+    <p>
+      <%= f.submit "Create comment", class: "btn btn-primary btn_comment" %>
+    </p>
+  <% end %>
+
 </div>
