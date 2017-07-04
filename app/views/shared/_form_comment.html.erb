@@ -1,6 +1,6 @@
 <%= form_for([micropost, micropost.comments.build]) do |f| %>
 <p>
-  <%= f.text_area :content , placeholder: "Write comments... ", class: "text_comment" %>
+  <%= f.text_field :content , placeholder: "Write comments... ", class: "text_comment" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
 </p>
 <p>

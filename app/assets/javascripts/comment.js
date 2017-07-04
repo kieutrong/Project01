@@ -10,7 +10,8 @@ $(document).ready(function() {
     dataType: 'json',
     success: function(response) {
       if(response.status == 'success'){
-        $(".microposts > .user_comment").after(response.html);
+        self.closest(".microposts > .micropost_all").after(response.html);
+        $('.text_comment').val('');
       }
     },
     error:function (xhr, ajaxOptions, thrownError){
@@ -34,6 +35,7 @@ $(document).ready(function() {
     success: function(response) {
       if(response.status == 'success'){
         self.closest('.user_comment').hide();
+
       }
     },
     error:function (xhr, ajaxOptions, thrownError){

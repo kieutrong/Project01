@@ -22,11 +22,11 @@
 <% else %>
   <div class="row center jumbotron col-md-8  ">
     <h1><%= t ".welcome" %></h1>
-
+    <%= render "shared/bootstrap-slider"%>
     <h2>
       <%= t ".this_is_the_home" %>
       <%= link_to t(".ruby_on_rails"), "http://www.railstutorial.org/" %>
-      <%= t ".sample_application" %>
+      <%= t ".connect_application" %>
     </h2>
 
   </div>

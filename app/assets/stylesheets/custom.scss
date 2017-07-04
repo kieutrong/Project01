@@ -398,9 +398,9 @@ span.picture {
 
   .text_comment{
     max-width: 680px;
-    height: 35px;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-left: 10px;
+    padding-bottom: 10px;
   }
 
   .btn_comment{
@@ -452,6 +452,19 @@ span.picture {
 /*sign_up_now*/
 .jumbotron{
   height: 500px;
+  h1{
+    color: #8A0808;
+    font-size: 40px;
+  }
+  h2{
+    a{
+      &:hover {
+        text-decoration: none;
+        color: #8A0808;
+        background: #eaeaea;
+      }
+    }
+  }
 }
 .sign_up_now{
   margin-left: 30px;
@@ -478,4 +491,41 @@ label.error{
 .error-class{
   color: red;
 
+}
+
+
+ //
+ .user_comment {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  .content_commented {
+    display: block;
+    margin-left: 60px;
+    padding-top: 6px;
+
+  }
+  .time_of_comment {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .user_commented {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  .delete_comment{
+    float: left;
+    margin-top: -18px;
+    margin-left: 180px;
+  }
+}
+
+#slider1_container{
+  margin-left: -44px;
 }
