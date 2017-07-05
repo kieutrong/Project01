@@ -10,7 +10,7 @@ $(document).ready(function() {
     dataType: 'json',
     success: function(response) {
       if(response.status == 'success'){
-        self.closest(".microposts > .micropost_all").after(response.html);
+        self.next().prepend(response.html);
         $('.text_comment').val('');
       }
     },

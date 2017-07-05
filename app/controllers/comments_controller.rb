@@ -18,19 +18,13 @@ class CommentsController < ApplicationController
   end
 
   def create
-      @micropost = Micropost.find_by id:(params[:micropost_id])
-      @comment = Comment.find_by id:(params[:manager_parent_id])
-    if @comment.nil?
-      @comment = @micropost.comments.build(comment_params)
+    @micropost = Micropost.find_by id:(params[:micropost_id])
+    @comment = @micropost.comments.build(comment_params)
+    if @comment.save
+      render json: {status: :success, html: render_to_string(@comment)}
     else
-      @comment_child = @comment.comments.build(comment_params)
+      render json: {status: :error, message: "Create comment fails"}
     end
-
-      if @comment.save
-        render json: {status: :success, html: render_to_string(@comment)}
-      else
-        render json: {status: :error, message: "Create comment fails"}
-      end
   end
 
   def update
@@ -59,7 +53,7 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit :content
+      params.require(:comment).permit(:content, :user_id)
     end
 end
 
