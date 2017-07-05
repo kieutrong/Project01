@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: {status: :success, html: render_to_string(@comment)}
     else
-      render json: {status: :error, message: "Create comment fails"}
+      render json: {status: :error, errors: @comment.errors.messages}
     end
   end
 

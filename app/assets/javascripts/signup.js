@@ -1,23 +1,19 @@
 $(document).ready(function () {
   $('#new_user').submit(function (event) {
     event.preventDefault();
-    var form = $(this);
-    var params = form.serialize();
-    var submit_button = form.find('#submit_new_user');
-
-    form_clear_errors();
-    var method = method_form(form);
+    var self = $(this);
+    var params = self.serialize();
     $.ajax({
-      type: method,
-      url: form.attr('action'),
+      url: self.attr('action'),
+      type: 'POST',
       data: params,
       dataType: 'json',
       success: function (response) {
         if (response.status == 'success') {
           window.location.replace(response.redirect_to);
         } else {
-          page_notice_custom_error()
-          form_has_errors(form,'user',response.errors)
+          $('.error-class').remove();
+          form_has_errors(self,'user',response.errors);
         }
       },
       error: function (xhr, ajaxOptions, thrownError) {

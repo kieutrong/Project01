@@ -35,7 +35,6 @@ $(document).ready(function() {
     success: function(response) {
       if(response.status == 'success'){
         self.closest('.user_comment').hide();
-
       }
     },
     error:function (xhr, ajaxOptions, thrownError){
