@@ -11,16 +11,4 @@
       method: :delete, :remote => true, class: "delete_comment",data: {confirm: "You sure?"} %>
     <% end %>
   <% end %>
-
-  <%= form_for([comment.micropost, comment, comment.comment_child.build]) do |f| %>
-    <p>
-      <%= f.text_field :content , placeholder: "Write comments... ", class: "text_comment" %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :manager_parent_id, value: comment.id %>
-    </p>
-    <p>
-      <%= f.submit "Create comment", class: "btn btn-primary btn_comment" %>
-    </p>
-  <% end %>
-
 </div>

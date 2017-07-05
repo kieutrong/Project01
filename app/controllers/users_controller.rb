@@ -15,10 +15,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
-
     if @user.save
-      render json: {status: :success, html: t(".please_check_your_email")}
-      # render json: {status: :success, html: render_to_string(@user)}
+      log_in @user
+      flash[:success] = "Welcome to the Sample App!"
+      render json: {status: :success, redirect_to: root_url}
     else
       render json: {status: :error, errors: @user.errors.messages}
     end
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
   end
 
   def admin_user
-    redirect_to root_url unless current_user.admin?
+    redirect_to root_url unless current_user.is_admin?
   end
 
   def load_user

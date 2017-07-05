@@ -16,10 +16,8 @@ ActiveRecord::Schema.define(version: 20170626072652) do
     t.string "content"
     t.integer "user_id"
     t.integer "micropost_id"
-    t.integer "manager_parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["manager_parent_id"], name: "index_comments_on_manager_parent_id"
     t.index ["micropost_id"], name: "index_comments_on_micropost_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -53,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170626072652) do
     t.string "remember_digest"
     t.boolean "is_admin", default: false
     t.string "activation_digest"
-    t.boolean "activated", default: false
+    t.boolean "activated", default: true
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
